@@ -20,9 +20,12 @@ export const TOKEN = {
 } as const;
 
 export const SOCIAL = {
-  /** Official X (Twitter) profile URL. e.g. "https://x.com/GreenoCoin" */
-  X_URL: null as string | null,
+  /** Official X (Twitter) profile URL */
+  X_URL: "https://x.com/greeno_solana?s=11" as string,
 
-  /** Official TikTok profile URL. e.g. "https://www.tiktok.com/@greenocoin" */
-  TIKTOK_URL: null as string | null,
+  /** Official TikTok profile URL */
+  TIKTOK_URL: "https://vm.tiktok.com/ZN8Pq8TrS/" as string,
+
+  /** Official website URL */
+  WEBSITE_URL: "https://www.greeno.fit" as string,
 } as const;
