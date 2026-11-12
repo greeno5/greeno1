@@ -14,7 +14,14 @@
   --font-mono: var(--font-jetbrains), ui-monospace, monospace;
 
   --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+  
+  /* Custom breakpoint */
+  --breakpoint-xs: 375px;
 }
+
+/* Add xs variant support for custom breakpoint */
+@custom-media --xs (min-width: 375px);
+@variant xs (@media (min-width: 375px));
 
 :root {
   color-scheme: dark;
@@ -24,6 +31,8 @@ html {
   background: var(--color-ink);
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  /* Prevent horizontal scroll */
+  overflow-x: hidden;
 }
 
 body {
@@ -32,9 +41,9 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* `clip` contains accidental horizontal overflow without creating a scroll
-     container, which would break `position: sticky` for descendants. */
+  /* Prevent horizontal scroll and ensure proper mobile layout */
   overflow-x: clip;
+  min-height: 100dvh;
 }
 
 ::selection {
@@ -54,10 +63,7 @@ body {
   width: 100%;
   max-width: 80rem;
   margin-inline: auto;
-  padding-inline: 1.25rem;
-  @media (min-width: 640px) {
-    padding-inline: 2rem;
-  }
+  padding-inline: clamp(1rem, 4vw, 2rem);
 }
 
 @utility text-gradient-green {

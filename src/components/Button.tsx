@@ -5,10 +5,10 @@ type Variant = "primary" | "secondary" | "ghost";
 
 const styles: Record<Variant, string> = {
   primary:
-    "bg-neon text-ink shadow-[0_0_0_1px_rgb(57_255_20/0.6),0_10px_40px_-10px_rgb(57_255_20/0.8)] hover:bg-electric hover:shadow-[0_0_0_1px_rgb(140_255_0/0.8),0_14px_50px_-8px_rgb(140_255_0/0.9)]",
+    "bg-neon text-ink shadow-[0_0_0_1px_rgb(57_255_20/0.6),0_10px_40px_-10px_rgb(57_255_20/0.8)] hover:bg-electric hover:shadow-[0_0_0_1px_rgb(140_255_0/0.8),0_14px_50px_-8px_rgb(140_255_0/0.9)] active:shadow-[0_0_0_1px_rgb(57_255_20/0.6),0_8px_30px_-8px_rgb(57_255_20/0.7)]",
   secondary:
-    "text-white border border-white/15 bg-white/[0.03] backdrop-blur-md hover:border-gold/60 hover:text-gold-light hover:bg-gold/[0.06]",
-  ghost: "text-white/80 hover:text-neon",
+    "text-white border border-white/15 bg-white/[0.03] backdrop-blur-md hover:border-gold/60 hover:text-gold-light hover:bg-gold/[0.06] active:border-gold/40",
+  ghost: "text-white/80 hover:text-neon active:text-neon/80",
 };
 
 export function Button({
@@ -25,7 +25,7 @@ export function Button({
   return (
     <Link
       href={href}
-      className={`group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full px-7 py-3.5 font-display text-[0.78rem] font-semibold tracking-[0.16em] uppercase transition-all duration-300 ease-premium hover:-translate-y-0.5 active:translate-y-0 ${styles[variant]} ${className}`}
+      className={`group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full px-5 py-3 font-display text-[0.7rem] font-semibold tracking-[0.14em] uppercase transition-all duration-300 ease-premium hover:-translate-y-0.5 active:translate-y-0 sm:px-6 sm:py-3.5 sm:text-[0.75rem] md:px-7 md:text-[0.78rem] ${styles[variant]} ${className}`}
     >
       {variant === "primary" && (
         <span
@@ -37,7 +37,7 @@ export function Button({
       <svg
         aria-hidden="true"
         viewBox="0 0 16 16"
-        className="relative h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1"
+        className="relative h-3 w-3 transition-transform duration-300 group-hover:translate-x-1 sm:h-3.5 sm:w-3.5"
         fill="none"
         stroke="currentColor"
         strokeWidth="2"

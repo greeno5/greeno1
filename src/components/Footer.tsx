@@ -26,24 +26,24 @@ const footerSocials = [
 
 export function Footer() {
   return (
-    <footer className="relative mt-24 border-t border-white/[0.06] bg-ink-2/60">
+    <footer className="relative mt-20 border-t border-white/[0.06] bg-ink-2/60 sm:mt-24">
       <div
         aria-hidden="true"
         className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-neon/50 to-transparent"
       />
-      <div className="container-x grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr]">
+      <div className="container-x grid gap-10 py-12 sm:gap-12 sm:py-14 md:grid-cols-[1.4fr_1fr_1fr] md:py-16">
         <div className="max-w-sm">
           <Logo />
-          <p className="mt-5 font-display text-sm font-semibold tracking-[0.2em] text-white">{site.slogan}</p>
-          <p className="mt-2 text-sm leading-relaxed text-white/55">{site.tagline}</p>
+          <p className="mt-4 font-display text-xs font-semibold tracking-[0.18em] text-white sm:mt-5 sm:text-sm sm:tracking-[0.2em]">{site.slogan}</p>
+          <p className="mt-2 text-xs leading-relaxed text-white/55 sm:text-sm">{site.tagline}</p>
         </div>
 
-        <nav aria-label="Footer">
-          <p className="eyebrow mb-5 !text-white/40">Explore</p>
-          <ul className="space-y-3">
+        <nav aria-label="Footer" className="md:ml-auto">
+          <p className="eyebrow mb-4 !text-[0.65rem] !text-white/40 sm:mb-5 sm:!text-xs">Explore</p>
+          <ul className="space-y-2.5 sm:space-y-3">
             {navLinks.map((l) => (
               <li key={l.href}>
-                <Link href={l.href} className="text-sm text-white/70 transition-colors hover:text-neon">
+                <Link href={l.href} className="text-xs text-white/70 transition-colors hover:text-neon sm:text-sm">
                   {l.label}
                 </Link>
               </li>
@@ -52,8 +52,8 @@ export function Footer() {
         </nav>
 
         <div>
-          <p className="eyebrow mb-5 !text-white/40">Community</p>
-          <ul className="flex items-center gap-3" aria-label="Official GREENO channels">
+          <p className="eyebrow mb-4 !text-[0.65rem] !text-white/40 sm:mb-5 sm:!text-xs">Community</p>
+          <ul className="flex items-center gap-2.5 sm:gap-3" aria-label="Official GREENO channels">
             {footerSocials.map(({ key, label, url, Icon }) => (
               <li key={key}>
                 {url ? (
@@ -62,18 +62,18 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`GREENO on ${label}`}
-                    className="group inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white/70 transition-all duration-300 hover:-translate-y-0.5 hover:border-neon/60 hover:text-neon hover:shadow-[0_0_24px_-4px_rgb(57_255_20/0.6)]"
+                    className="group inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white/70 transition-all duration-300 hover:-translate-y-0.5 hover:border-neon/60 hover:text-neon hover:shadow-[0_0_24px_-4px_rgb(57_255_20/0.6)] sm:h-10 sm:w-10"
                   >
-                    <Icon />
+                    <Icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                   </a>
                 ) : (
                   <span
                     title={`${label} — coming soon`}
                     aria-label={`${label}: coming soon`}
-                    className="group relative inline-flex h-10 w-10 cursor-not-allowed items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white/50 opacity-60"
+                    className="group relative inline-flex h-9 w-9 cursor-not-allowed items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white/50 opacity-60 sm:h-10 sm:w-10"
                   >
-                    <Icon />
-                    <span className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-emerald px-2 py-1 font-mono text-[10px] tracking-wider text-neon opacity-0 transition-opacity group-hover:opacity-100">
+                    <Icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                    <span className="pointer-events-none absolute -top-7 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-emerald px-2 py-1 font-mono text-[9px] tracking-wider text-neon opacity-0 transition-opacity group-hover:opacity-100 sm:-top-8 sm:text-[10px]">
                       SOON
                     </span>
                   </span>
@@ -81,16 +81,16 @@ export function Footer() {
               </li>
             ))}
           </ul>
-          <p className="mt-4 text-xs leading-relaxed text-white/40">
+          <p className="mt-3.5 text-[0.65rem] leading-relaxed text-white/40 sm:mt-4 sm:text-xs">
             Official channels will be announced here. Only trust links published on this website.
           </p>
         </div>
       </div>
 
       <div className="border-t border-white/[0.05]">
-        <div className="container-x flex flex-col gap-3 py-6 text-xs text-white/40 md:flex-row md:items-center md:justify-between">
+        <div className="container-x flex flex-col gap-2.5 py-5 text-[0.65rem] text-white/40 sm:gap-3 sm:py-6 sm:text-xs md:flex-row md:items-center md:justify-between">
           <p>© {new Date().getFullYear()} GREENO. All rights reserved.</p>
-          <p className="max-w-2xl md:text-right">
+          <p className="max-w-2xl leading-relaxed md:text-right">
             GREENO COIN is not yet launched. Nothing on this website is financial advice or an offer to sell any asset.
             Roadmap items are proposed milestones and may change.
           </p>

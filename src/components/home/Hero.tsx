@@ -74,7 +74,7 @@ export function Hero() {
   return (
     <>
       {/* Main Hero Section with Countdown */}
-      <section ref={ref} className="relative isolate overflow-hidden pt-20 pb-12 lg:pt-24 lg:pb-16">
+      <section ref={ref} className="relative isolate overflow-hidden pt-16 pb-8 sm:pt-18 sm:pb-10 md:pt-20 md:pb-12 lg:pt-24 lg:pb-16">
         {/* Backdrop */}
         <motion.div aria-hidden="true" style={{ y: bgY }} className="absolute inset-0 -z-10">
           <Image
@@ -103,18 +103,18 @@ export function Hero() {
           initial={reduce ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.2, ease }}
-          className="container-x relative z-10 mt-8 flex justify-center"
+          className="container-x relative z-10 mt-6 flex justify-center sm:mt-7 md:mt-8"
         >
-          <div className="flex flex-col items-center gap-4">
-            <p className="font-mono text-xs tracking-[0.25em] text-white/40 uppercase">Follow Us</p>
+          <div className="flex flex-col items-center gap-3 sm:gap-4">
+            <p className="font-mono text-[0.65rem] tracking-[0.22em] text-white/40 uppercase sm:text-xs sm:tracking-[0.25em]">Follow Us</p>
             <SocialLinks size="lg" />
           </div>
         </motion.div>
       </section>
 
       {/* Brand Section with Coin */}
-      <section className="relative isolate overflow-hidden py-20 sm:py-28 lg:py-32">
-        <div className="container-x grid items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
+      <section className="relative isolate overflow-hidden py-16 sm:py-20 md:py-24 lg:py-28 xl:py-32">
+        <div className="container-x grid items-center gap-10 sm:gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
           <motion.div
             style={{ y: textY }}
             initial={reduce ? false : { opacity: 0, y: 40 }}
@@ -123,43 +123,49 @@ export function Hero() {
             transition={{ duration: 1, ease }}
             className="relative z-10 order-2 text-center lg:order-1 lg:text-left"
           >
-            <p className="eyebrow inline-flex items-center gap-3 rounded-full border border-neon/25 bg-neon/[0.06] px-4 py-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-neon shadow-[0_0_10px_#39ff14]" />
+            <p className="eyebrow inline-flex items-center gap-2 rounded-full border border-neon/25 bg-neon/[0.06] px-3 py-1.5 text-[0.65rem] sm:gap-2.5 sm:px-3.5 sm:py-2 sm:text-xs md:gap-3 md:px-4">
+              <span className="h-1 w-1 rounded-full bg-neon shadow-[0_0_10px_#39ff14] sm:h-1.5 sm:w-1.5" />
               GREENO COIN · Stronger Together
             </p>
 
-            <h2 className="mt-7 font-display text-[3rem] leading-none font-extrabold tracking-[-0.02em] sm:text-[4.5rem] lg:text-[5.5rem]">
+            <h2 
+              className="mt-5 font-display font-extrabold leading-none tracking-[-0.02em] sm:mt-6 md:mt-7"
+              style={{ fontSize: "clamp(2.5rem, 10vw, 5.5rem)" }}
+            >
               <span className="text-gradient-green drop-shadow-[0_0_40px_rgb(57_255_20/0.25)]">GREENO</span>
             </h2>
 
-            <p className="mt-4 font-display text-xl font-semibold tracking-[0.06em] uppercase sm:text-3xl lg:text-[2.2rem]">
+            <p 
+              className="mt-3 font-display font-semibold tracking-[0.06em] uppercase sm:mt-4"
+              style={{ fontSize: "clamp(1.125rem, 4.5vw, 2.2rem)" }}
+            >
               The future is <span className="text-gradient-gold">green.</span>
             </p>
 
-            <p className="mx-auto mt-6 max-w-md text-base text-white/65 sm:text-lg lg:mx-0">
+            <p className="mx-auto mt-4 max-w-md text-sm text-white/65 sm:mt-5 sm:text-base md:text-lg lg:mx-0">
               Stronger Together. Built for the Community.
             </p>
 
             {/* BUY + CHART buttons */}
-            <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
+            <div className="mt-6 flex flex-col items-center gap-2.5 sm:mt-7 sm:flex-row sm:justify-center sm:gap-3 lg:justify-start md:mt-8">
               <BuyHeroBtn />
               <ChartBtn />
             </div>
 
             {/* Contract address */}
-            <div className="mx-auto mt-6 max-w-lg lg:mx-0">
+            <div className="mx-auto mt-5 max-w-lg sm:mt-6 lg:mx-0">
               <ContractAddress />
             </div>
 
-            <dl className="mx-auto mt-10 grid max-w-md grid-cols-3 gap-6 border-t border-white/[0.07] pt-7 text-left lg:mx-0">
+            <dl className="mx-auto mt-8 grid max-w-md grid-cols-3 gap-4 border-t border-white/[0.07] pt-6 text-left sm:gap-5 sm:pt-7 md:mt-10 lg:mx-0">
               {[
                 ["Symbol", "GREENO"],
                 ["Network", "Solana"],
                 ["Status", "Launching"],
               ].map(([k, v]) => (
                 <div key={k}>
-                  <dt className="font-mono text-[0.65rem] tracking-[0.2em] text-white/40 uppercase">{k}</dt>
-                  <dd className="mt-1.5 font-display text-sm font-semibold text-white">{v}</dd>
+                  <dt className="font-mono text-[0.6rem] tracking-[0.18em] text-white/40 uppercase sm:text-[0.65rem] sm:tracking-[0.2em]">{k}</dt>
+                  <dd className="mt-1 font-display text-xs font-semibold text-white sm:mt-1.5 sm:text-sm">{v}</dd>
                 </div>
               ))}
             </dl>
@@ -171,7 +177,7 @@ export function Hero() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.3, delay: 0.2, ease }}
-            className="relative order-1 mx-auto w-[min(78vw,400px)] lg:order-2 lg:w-[min(42vw,540px)]"
+            className="relative order-1 mx-auto w-[min(85vw,360px)] sm:w-[min(70vw,400px)] lg:order-2 lg:w-[min(42vw,540px)]"
           >
             <div aria-hidden="true" className="spin-slow absolute -inset-[12%] rounded-full border border-dashed border-gold/25" />
             <div aria-hidden="true" className="absolute -inset-[5%] rounded-full border border-neon/15" />
@@ -179,7 +185,7 @@ export function Hero() {
               aria-hidden="true"
               className="absolute -inset-[22%] rounded-full bg-[conic-gradient(from_180deg,transparent,rgb(57_255_20/0.18),transparent_40%)] blur-2xl"
             />
-            <Coin3D priority sizes="(min-width: 1024px) 540px, 78vw" />
+            <Coin3D priority sizes="(min-width: 1024px) 540px, (min-width: 640px) 400px, 85vw" />
           </motion.div>
         </div>
       </section>
