@@ -14,7 +14,7 @@ export const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/tokenomics", label: "Tokenomics" },
-  { href: "/roadmap", label: "Roadmap" },
+  { href: "/roadmap", label: "How to Buy" },
 ] as const;
 
 export type SocialKey = "x" | "telegram" | "discord" | "tiktok";

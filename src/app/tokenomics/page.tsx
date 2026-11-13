@@ -19,7 +19,13 @@ const tokenFacts = [
   { label: "Token Name", value: "GREENO", confirmed: true },
   { label: "Token Symbol", value: "GREENO", confirmed: true },
   { label: "Blockchain", value: "To Be Announced", confirmed: false },
-  { label: "Total Supply", value: "To Be Announced", confirmed: false },
+  { 
+    label: "Total Supply", 
+    value: "1,000,000,000", 
+    subtitle: "100 Billion GREENO",
+    confirmed: true,
+    highlight: true 
+  },
   { label: "Contract Address", value: "Not Yet Deployed", confirmed: false, mono: true },
 ];
 
@@ -95,7 +101,7 @@ export default function TokenomicsPage() {
                   delay={i * 0.06}
                   className={`group rounded-2xl border border-white/[0.07] bg-ink/60 p-5 transition-colors duration-300 hover:border-neon/25 ${
                     f.mono ? "sm:col-span-2" : ""
-                  }`}
+                  } ${f.highlight ? "sm:col-span-2 border-neon/20 bg-gradient-to-br from-neon/[0.08] to-ink/60" : ""}`}
                 >
                   <div className="flex items-start justify-between gap-3">
                     <dt className="font-mono text-[0.65rem] tracking-[0.22em] text-white/45 uppercase">{f.label}</dt>
@@ -103,11 +109,16 @@ export default function TokenomicsPage() {
                   </div>
                   <dd
                     className={`mt-4 font-display font-semibold ${f.confirmed ? "text-white" : "text-white/55"} ${
-                      f.mono ? "font-mono text-base tracking-wide sm:text-lg" : "text-xl sm:text-2xl"
+                      f.mono ? "font-mono text-base tracking-wide sm:text-lg" : f.highlight ? "text-2xl sm:text-3xl lg:text-4xl" : "text-xl sm:text-2xl"
                     }`}
                   >
                     {f.value}
                   </dd>
+                  {f.subtitle && (
+                    <dd className="mt-2 font-display text-sm font-medium text-neon sm:text-base">
+                      {f.subtitle}
+                    </dd>
+                  )}
                 </Reveal>
               ))}
             </dl>
