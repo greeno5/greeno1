@@ -60,16 +60,8 @@ export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const coinY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 120]);
-  const textY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : -60]);
   const bgY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 80]);
   const fade = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-
-  const fadeUp = (delay: number) => ({
-    initial: reduce ? false : { opacity: 0, y: 24 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.9, delay: 0.9 + delay, ease },
-  });
 
   return (
     <>
@@ -112,81 +104,88 @@ export function Hero() {
         </motion.div>
       </section>
 
-      {/* Brand Section with Coin */}
-      <section className="relative isolate overflow-hidden py-16 sm:py-20 md:py-24 lg:py-28 xl:py-32">
-        <div className="container-x grid items-center gap-10 sm:gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
-          <motion.div
-            style={{ y: textY }}
-            initial={reduce ? false : { opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 1, ease }}
-            className="relative z-10 order-2 text-center lg:order-1 lg:text-left"
-          >
-            <p className="eyebrow inline-flex items-center gap-2 rounded-full border border-neon/25 bg-neon/[0.06] px-3 py-1.5 text-[0.65rem] sm:gap-2.5 sm:px-3.5 sm:py-2 sm:text-xs md:gap-3 md:px-4">
-              <span className="h-1 w-1 rounded-full bg-neon shadow-[0_0_10px_#39ff14] sm:h-1.5 sm:w-1.5" />
-              GREENO COIN · Stronger Together
-            </p>
-
-            <h2 
-              className="mt-5 font-display font-extrabold leading-none tracking-[-0.02em] sm:mt-6 md:mt-7"
-              style={{ fontSize: "clamp(2.5rem, 10vw, 5.5rem)" }}
+      {/* Brand Section with Coin - FIXED LAYOUT */}
+      <section className="relative isolate overflow-hidden py-12 sm:py-16 md:py-20 lg:min-h-[calc(100vh-24rem)]">
+        <div className="container-x mx-auto h-full max-w-7xl">
+          <div className="grid h-full items-center gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+            {/* LEFT COLUMN - Text Content */}
+            <motion.div
+              initial={reduce ? false : { opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 1, ease }}
+              className="relative z-10 order-2 flex flex-col justify-center text-center lg:order-1 lg:text-left"
             >
-              <span className="text-gradient-green drop-shadow-[0_0_40px_rgb(57_255_20/0.25)]">GREENO</span>
-            </h2>
+              <p className="eyebrow inline-flex items-center gap-2 self-center rounded-full border border-neon/25 bg-neon/[0.06] px-3 py-1.5 text-[0.65rem] sm:gap-2.5 sm:px-3.5 sm:py-2 sm:text-xs md:gap-3 md:px-4 lg:self-start">
+                <span className="h-1 w-1 rounded-full bg-neon shadow-[0_0_10px_#39ff14] sm:h-1.5 sm:w-1.5" />
+                GREENO COIN · Stronger Together
+              </p>
 
-            <p 
-              className="mt-3 font-display font-semibold tracking-[0.06em] uppercase sm:mt-4"
-              style={{ fontSize: "clamp(1.125rem, 4.5vw, 2.2rem)" }}
+              <h2 
+                className="mt-5 font-display font-extrabold leading-[0.9] tracking-[-0.02em] sm:mt-6 md:mt-7"
+                style={{ fontSize: "clamp(2.5rem, 10vw, 5.5rem)" }}
+              >
+                <span className="text-gradient-green drop-shadow-[0_0_40px_rgb(57_255_20/0.25)]">GREENO</span>
+              </h2>
+
+              <p 
+                className="mt-3 font-display font-semibold tracking-[0.06em] uppercase sm:mt-4"
+                style={{ fontSize: "clamp(1.125rem, 4.5vw, 2.2rem)" }}
+              >
+                The future is <span className="text-gradient-gold">green.</span>
+              </p>
+
+              <p className="mx-auto mt-4 max-w-md text-sm text-white/65 sm:mt-5 sm:text-base md:text-lg lg:mx-0">
+                Stronger Together. Built for the Community.
+              </p>
+
+              {/* BUY + CHART buttons */}
+              <div className="mt-6 flex flex-col items-center gap-2.5 sm:mt-7 sm:flex-row sm:justify-center sm:gap-3 md:mt-8 lg:justify-start">
+                <BuyHeroBtn />
+                <ChartBtn />
+              </div>
+
+              {/* Contract address */}
+              <div className="mx-auto mt-5 max-w-lg sm:mt-6 lg:mx-0">
+                <ContractAddress />
+              </div>
+
+              <dl className="mx-auto mt-8 grid max-w-md grid-cols-3 gap-4 border-t border-white/[0.07] pt-6 text-left sm:gap-5 sm:pt-7 md:mt-10 lg:mx-0">
+                {[
+                  ["Symbol", "GREENO"],
+                  ["Network", "Solana"],
+                  ["Status", "Launching"],
+                ].map(([k, v]) => (
+                  <div key={k}>
+                    <dt className="font-mono text-[0.6rem] tracking-[0.18em] text-white/40 uppercase sm:text-[0.65rem] sm:tracking-[0.2em]">{k}</dt>
+                    <dd className="mt-1 font-display text-xs font-semibold text-white sm:mt-1.5 sm:text-sm">{v}</dd>
+                  </div>
+                ))}
+              </dl>
+            </motion.div>
+
+            {/* RIGHT COLUMN - Coin Artwork (FIXED POSITIONING) */}
+            <motion.div
+              initial={reduce ? false : { opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 1.2, delay: 0.15, ease }}
+              className="relative order-1 mx-auto flex w-full max-w-[400px] items-center justify-center self-center lg:order-2 lg:max-w-none lg:self-center"
             >
-              The future is <span className="text-gradient-gold">green.</span>
-            </p>
-
-            <p className="mx-auto mt-4 max-w-md text-sm text-white/65 sm:mt-5 sm:text-base md:text-lg lg:mx-0">
-              Stronger Together. Built for the Community.
-            </p>
-
-            {/* BUY + CHART buttons */}
-            <div className="mt-6 flex flex-col items-center gap-2.5 sm:mt-7 sm:flex-row sm:justify-center sm:gap-3 lg:justify-start md:mt-8">
-              <BuyHeroBtn />
-              <ChartBtn />
-            </div>
-
-            {/* Contract address */}
-            <div className="mx-auto mt-5 max-w-lg sm:mt-6 lg:mx-0">
-              <ContractAddress />
-            </div>
-
-            <dl className="mx-auto mt-8 grid max-w-md grid-cols-3 gap-4 border-t border-white/[0.07] pt-6 text-left sm:gap-5 sm:pt-7 md:mt-10 lg:mx-0">
-              {[
-                ["Symbol", "GREENO"],
-                ["Network", "Solana"],
-                ["Status", "Launching"],
-              ].map(([k, v]) => (
-                <div key={k}>
-                  <dt className="font-mono text-[0.6rem] tracking-[0.18em] text-white/40 uppercase sm:text-[0.65rem] sm:tracking-[0.2em]">{k}</dt>
-                  <dd className="mt-1 font-display text-xs font-semibold text-white sm:mt-1.5 sm:text-sm">{v}</dd>
-                </div>
-              ))}
-            </dl>
-          </motion.div>
-
-          <motion.div
-            style={{ y: coinY }}
-            initial={reduce ? false : { opacity: 0, scale: 0.85 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 1.3, delay: 0.2, ease }}
-            className="relative order-1 mx-auto w-[min(85vw,360px)] sm:w-[min(70vw,400px)] lg:order-2 lg:w-[min(42vw,540px)]"
-          >
-            <div aria-hidden="true" className="spin-slow absolute -inset-[12%] rounded-full border border-dashed border-gold/25" />
-            <div aria-hidden="true" className="absolute -inset-[5%] rounded-full border border-neon/15" />
-            <div
-              aria-hidden="true"
-              className="absolute -inset-[22%] rounded-full bg-[conic-gradient(from_180deg,transparent,rgb(57_255_20/0.18),transparent_40%)] blur-2xl"
-            />
-            <Coin3D priority sizes="(min-width: 1024px) 540px, (min-width: 640px) 400px, 85vw" />
-          </motion.div>
+              {/* Decorative rings */}
+              <div aria-hidden="true" className="spin-slow absolute -inset-[12%] rounded-full border border-dashed border-gold/25" />
+              <div aria-hidden="true" className="absolute -inset-[5%] rounded-full border border-neon/15" />
+              <div
+                aria-hidden="true"
+                className="absolute -inset-[22%] rounded-full bg-[conic-gradient(from_180deg,transparent,rgb(57_255_20/0.18),transparent_40%)] blur-2xl"
+              />
+              
+              {/* Coin Image - Properly sized and centered */}
+              <div className="relative aspect-square w-full">
+                <Coin3D priority sizes="(min-width: 1024px) 500px, (min-width: 768px) 400px, 400px" />
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
     </>
