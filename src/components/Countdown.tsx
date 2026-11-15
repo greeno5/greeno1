@@ -346,7 +346,7 @@ export function Countdown() {
           >
             Launch Times Worldwide
           </motion.h2>
-          <div className="grid gap-3 sm:grid-cols-2 sm:gap-4 lg:gap-5">
+          <div className="grid gap-3 sm:gap-4 md:grid-cols-3 lg:gap-5">
             {LAUNCH_CONFIG.FEATURED_TIMEZONES.map((tz, i) => (
               <motion.div
                 key={tz.timezone}

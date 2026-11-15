@@ -26,13 +26,6 @@ export const LAUNCH_CONFIG = {
       abbreviation: 'GST',
     },
     {
-      city: 'Casablanca',
-      country: 'Morocco',
-      timezone: 'Africa/Casablanca',
-      flag: '🇲🇦',
-      abbreviation: 'WET',
-    },
-    {
       city: 'Paris',
       country: 'Europe',
       timezone: 'Europe/Paris',
