@@ -10,13 +10,13 @@
 
 export const TOKEN = {
   /** Official on-chain contract address. Set once deployed and verified. */
-  CONTRACT_ADDRESS: null as string | null,
+  CONTRACT_ADDRESS: "8gsarhd6heZDPkAkbadjLLnpihzZMaHpiBNXBE5tpump" as string | null,
 
   /** Direct DEX / purchase page URL. e.g. "https://raydium.io/swap/?outputCurrency=..." */
-  BUY_URL: null as string | null,
+  BUY_URL: `https://raydium.io/swap/?outputCurrency=8gsarhd6heZDPkAkbadjLLnpihzZMaHpiBNXBE5tpump` as string | null,
 
   /** Chart page URL. e.g. "https://dexscreener.com/solana/..." */
-  CHART_URL: null as string | null,
+  CHART_URL: "https://dexscreener.com/solana/5fbtaz1azi4cjsagzub6kuyxkud8gvkuxn3rx5dspqrd" as string | null,
 } as const;
 
 export const SOCIAL = {

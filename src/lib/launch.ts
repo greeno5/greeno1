@@ -10,8 +10,9 @@ export const LAUNCH_CONFIG = {
    * Official launch timestamp (UTC)
    * Sunday, November 15, 2026 at 09:00 PM Dubai time (GST)
    * This is 5:00 PM UTC (Dubai is UTC+4)
+   * LAUNCH COMPLETED - Token is now live!
    */
-  LAUNCH_DATE_UTC: '2026-11-15T17:00:00Z',
+  LAUNCH_DATE_UTC: '2024-01-01T00:00:00Z',
 
   /**
    * Featured timezones displayed on the countdown

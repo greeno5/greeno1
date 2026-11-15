@@ -18,15 +18,20 @@ export const metadata: Metadata = {
 const tokenFacts = [
   { label: "Token Name", value: "GREENO", confirmed: true },
   { label: "Token Symbol", value: "GREENO", confirmed: true },
-  { label: "Blockchain", value: "To Be Announced", confirmed: false },
+  { label: "Blockchain", value: "Solana", confirmed: true },
   { 
     label: "Total Supply", 
-    value: "1,000,000,000", 
+    value: "100,000,000,000", 
     subtitle: "100 Billion GREENO",
     confirmed: true,
     highlight: true 
   },
-  { label: "Contract Address", value: "Not Yet Deployed", confirmed: false, mono: true },
+  { 
+    label: "Contract Address", 
+    value: "8gsarhd6heZDPkAkbadjLLnpihzZMaHpiBNXBE5tpump", 
+    confirmed: true, 
+    mono: true
+  },
 ];
 
 const principles = [
@@ -74,8 +79,7 @@ export default function TokenomicsPage() {
           </>
         }
       >
-        GREENO COIN is in its foundation stage. Details below are marked clearly as confirmed or coming soon. We will never
-        publish figures before they are final.
+        GREENO token is now live on Solana! All details are confirmed and verified. Check the contract address below and always verify on this official website.
       </PageHero>
 
       {/* Dashboard */}
@@ -87,8 +91,11 @@ export default function TokenomicsPage() {
           <div aria-hidden="true" className="absolute -top-32 -left-32 h-80 w-80 rounded-full bg-neon/10 blur-[100px]" />
           <div className="relative mb-8 flex flex-wrap items-center justify-between gap-4 border-b border-white/[0.07] pb-6">
             <div className="flex items-center gap-3">
-              <span className="h-2.5 w-2.5 rounded-full bg-gold shadow-[0_0_12px_#d8b45a]" />
-              <p className="font-mono text-xs tracking-[0.22em] text-white/60 uppercase">Status · Pre-launch</p>
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-neon opacity-75" />
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-neon shadow-[0_0_12px_#39ff14]" />
+              </span>
+              <p className="font-mono text-xs tracking-[0.22em] text-neon uppercase">Status · Live</p>
             </div>
             <p className="font-mono text-xs tracking-[0.22em] text-white/40 uppercase">GREENO / Token overview</p>
           </div>
@@ -124,7 +131,15 @@ export default function TokenomicsPage() {
             </dl>
 
             <Reveal delay={0.15}>
-              <AllocationDonut />
+              <AllocationDonut 
+                allocations={[
+                  { label: "Community & Rewards", percent: 40, color: "#39ff14" },
+                  { label: "Liquidity Pool", percent: 30, color: "#8cff00" },
+                  { label: "Development", percent: 15, color: "#d8b45a" },
+                  { label: "Marketing", percent: 10, color: "#ffd700" },
+                  { label: "Team", percent: 5, color: "#4ade80" },
+                ]}
+              />
             </Reveal>
           </div>
         </div>
@@ -166,14 +181,13 @@ export default function TokenomicsPage() {
         </div>
 
         <Reveal>
-          <div className="mt-16 flex flex-col gap-4 rounded-2xl border border-gold/25 bg-gold/[0.05] p-6 sm:flex-row sm:items-center sm:p-8">
-            <svg viewBox="0 0 24 24" className="h-8 w-8 shrink-0 text-gold" fill="currentColor" aria-hidden="true">
-              <path d="M12 2 1 21h22L12 2Zm1 15h-2v-2h2v2Zm0-4h-2V9h2v4Z" />
+          <div className="mt-16 flex flex-col gap-4 rounded-2xl border border-neon/25 bg-neon/[0.05] p-6 sm:flex-row sm:items-center sm:p-8">
+            <svg viewBox="0 0 24 24" className="h-8 w-8 shrink-0 text-neon" fill="currentColor" aria-hidden="true">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
             </svg>
             <p className="text-sm leading-relaxed text-white/70 sm:text-base">
-              <strong className="font-semibold text-gold-light">Security notice:</strong> GREENO COIN has not launched and no
-              contract has been deployed. Any token, presale or address claiming to be GREENO before an announcement on this
-              website is not official.
+              <strong className="font-semibold text-neon">Official Launch:</strong> GREENO is now live on Solana! The official
+              contract address is verified and displayed above. Always verify the contract address on this website before any transaction.
             </p>
           </div>
         </Reveal>

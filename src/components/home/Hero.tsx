@@ -59,16 +59,13 @@ function ChartBtn() {
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const bgY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 80]);
-  const fade = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
     <>
-      {/* Main Hero Section with Countdown */}
-      <section ref={ref} className="relative isolate overflow-hidden pt-16 pb-8 sm:pt-18 sm:pb-10 md:pt-20 md:pb-12 lg:pt-24 lg:pb-16">
+      {/* Brand Section with Coin */}
+      <section ref={ref} className="relative isolate overflow-hidden py-16 sm:py-20 md:py-24 lg:min-h-[calc(100vh-12rem)]">
         {/* Backdrop */}
-        <motion.div aria-hidden="true" style={{ y: bgY }} className="absolute inset-0 -z-10">
+        <div aria-hidden="true" className="absolute inset-0 -z-10">
           <Image
             src="/brand/greeno-keyart.webp"
             alt=""
@@ -79,33 +76,8 @@ export function Hero() {
           />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_30%,transparent_0%,rgb(3_6_4/0.8)_50%,#030604_85%)]" />
           <div className="bg-grid absolute inset-0 opacity-60" />
-        </motion.div>
+        </div>
         <Particles className="-z-10" />
-
-        {/* Countdown Component */}
-        <motion.div
-          style={{ opacity: fade }}
-          className="relative z-10"
-        >
-          <Countdown />
-        </motion.div>
-
-        {/* Social Links */}
-        <motion.div
-          initial={reduce ? false : { opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.2, ease }}
-          className="container-x relative z-10 mt-6 flex justify-center sm:mt-7 md:mt-8"
-        >
-          <div className="flex flex-col items-center gap-3 sm:gap-4">
-            <p className="font-mono text-[0.65rem] tracking-[0.22em] text-white/40 uppercase sm:text-xs sm:tracking-[0.25em]">Follow Us</p>
-            <SocialLinks size="lg" />
-          </div>
-        </motion.div>
-      </section>
-
-      {/* Brand Section with Coin - FIXED LAYOUT */}
-      <section className="relative isolate overflow-hidden py-12 sm:py-16 md:py-20 lg:min-h-[calc(100vh-24rem)]">
         <div className="container-x mx-auto h-full max-w-7xl">
           <div className="grid h-full items-center gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
             {/* LEFT COLUMN - Text Content */}
@@ -154,7 +126,7 @@ export function Hero() {
                 {[
                   ["Symbol", "GREENO"],
                   ["Network", "Solana"],
-                  ["Status", "Launching"],
+                  ["Status", "Live"],
                 ].map(([k, v]) => (
                   <div key={k}>
                     <dt className="font-mono text-[0.6rem] tracking-[0.18em] text-white/40 uppercase sm:text-[0.65rem] sm:tracking-[0.2em]">{k}</dt>
@@ -164,7 +136,7 @@ export function Hero() {
               </dl>
             </motion.div>
 
-            {/* RIGHT COLUMN - Coin Artwork (FIXED POSITIONING) */}
+            {/* RIGHT COLUMN - Coin Artwork */}
             <motion.div
               initial={reduce ? false : { opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -180,13 +152,26 @@ export function Hero() {
                 className="absolute -inset-[22%] rounded-full bg-[conic-gradient(from_180deg,transparent,rgb(57_255_20/0.18),transparent_40%)] blur-2xl"
               />
               
-              {/* Coin Image - Properly sized and centered */}
+              {/* Coin Image */}
               <div className="relative aspect-square w-full">
                 <Coin3D priority sizes="(min-width: 1024px) 500px, (min-width: 768px) 400px, 400px" />
               </div>
             </motion.div>
           </div>
         </div>
+
+        {/* Social Links */}
+        <motion.div
+          initial={reduce ? false : { opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1, ease }}
+          className="container-x relative z-10 mt-12 flex justify-center sm:mt-14 md:mt-16"
+        >
+          <div className="flex flex-col items-center gap-3 sm:gap-4">
+            <p className="font-mono text-[0.65rem] tracking-[0.22em] text-white/40 uppercase sm:text-xs sm:tracking-[0.25em]">Follow Us</p>
+            <SocialLinks size="lg" />
+          </div>
+        </motion.div>
       </section>
     </>
   );
